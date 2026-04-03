@@ -1,17 +1,16 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { ExternalLink, Github, Filter } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
 import { PROJECTS } from "@/constants/PROJECTS";
-import Link from "next/link";
-import Image from "next/image";
 
 export default function Projects() {
   const [selectedFilter, setSelectedFilter] = useState('All');
 
-  const filters = ['All', 'Full Stack', 'Frontend', 'Backend'];
+  const filters = ['All', 'Full Stack','Frontend', 'Backend'];
 
   const filteredProjects = selectedFilter === 'All'
     ? PROJECTS
@@ -133,14 +132,6 @@ export default function Projects() {
 
               </motion.div>
             ))}
-          </div>
-
-          <div className="flex justify-center">
-            <Link href="/projects">
-              <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 mt-15">
-                Check out all Projects
-              </Button>
-            </Link>
           </div>
         </div>
       </section>

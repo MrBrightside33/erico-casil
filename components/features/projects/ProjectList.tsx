@@ -1,8 +1,9 @@
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { ExternalLink, Github, Filter } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
 import { PROJECTS } from "@/constants/PROJECTS";
+import Image from "next/image";
 
 export default function Projects() {
   const [selectedFilter, setSelectedFilter] = useState('All');
@@ -71,7 +72,7 @@ export default function Projects() {
                 className="group bg-white rounded-2xl overflow-hidden border border-gray-200 hover:shadow-2xl transition-all duration-300"
               >
                 <div className="relative overflow-hidden aspect-video">
-                  <img
+                  <Image
                     src={project.image}
                     alt={project.title}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"

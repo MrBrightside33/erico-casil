@@ -4,10 +4,11 @@
   import { useState, useEffect } from "react";
   import Link from "next/link";
   import { usePathname } from "next/navigation";
-  import { Menu, X, Code2 } from "lucide-react";
+  import { Menu, X } from "lucide-react";
   import { motion, AnimatePresence } from "framer-motion";
   import Image from "next/image";
   import Casil from "@/public/images/casil2.jpg";
+  import { ThemeToggle } from "@/components/common/DarkMode";
 
   export default function Navbar() {
     const pathname = usePathname();
@@ -34,8 +35,8 @@
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? "bg-white/95 backdrop-blur-sm shadow-md"
-            : "bg-white/90 backdrop-blur-sm"
+            ? "bg-white/95 dark:bg-gray-900 backdrop-blur-sm shadow-md"
+            : "bg-white/90 dark:bg-gray-900 backdrop-blur-sm"
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 py-4">
@@ -50,7 +51,7 @@
                   className="w-10 h-10 object-cover rounded-full"
                   />
               </div>
-              <span className="text-xl font-bold text-gray-900">
+              <span className="text-xl font-bold text-gray-900 dark:text-white">
                 Erico Casil
               </span>
             </Link>
@@ -64,7 +65,7 @@
                   <Link
                     key={item.path}
                     href={item.path}
-                    className={`text-gray-700 hover:text-blue-600 transition-colors font-medium ${
+                    className={`text-gray-700  dark:text-white hover:text-blue-600 transition-colors font-medium ${
                       isActive ? "text-blue-600" : ""
                     }`}
                   >
@@ -72,12 +73,13 @@
                   </Link>
                 );
               })}
+              <ThemeToggle />
             </div>
 
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 text-gray-700 hover:bg-gray-100 rounded-lg"
+              className="md:hidden p-2 text-gray-700 hover:bg-gray-100 dark:bg-gray-800 rounded-lg"
               aria-label="Toggle menu"
             >
               {isMobileMenuOpen ? (
@@ -115,7 +117,7 @@
                           className={`block w-full text-left px-4 py-2 rounded-lg transition-colors font-medium ${
                             isActive
                               ? "bg-blue-50 text-blue-600"
-                              : "text-gray-700 hover:bg-blue-50 hover:text-blue-600"
+                              : "text-gray-700 dark:text-gray-300 hover:bg-blue-50 hover:text-blue-600"
                           }`}
                         >
                           {item.label}
@@ -123,6 +125,7 @@
                       </motion.div>
                     );
                   })}
+                  <ThemeToggle />
                 </div>
               </motion.div>
             )}
